@@ -1,20 +1,43 @@
 <template>
-  <img src="https://via.placeholder.com/250" alt="bg">
+  <img v-if="image" :src="image" alt="bg">
   <div class="bg-dark"></div>
 
   <div class="indesition-container">
-    <input type="text" placeholder="Write a question">
-    <p>Please remember to start with a question mark (?)</p>
+    <input v-model="question" type="text" placeholder="Write a question">
+    <p>Please remember to finish with a question mark (?)</p>
     <div>
-      <h2>Am i a developer ?</h2>
-      <h1>Yes, No, ...thinking</h1>
+      <h2>{{question}}</h2>
+      <h1>{{ answer }}</h1>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Indesition"
+  name: "Indesition",
+  data(){
+    return {
+      question:null,
+      answer:null,
+      image:null
+    }
+  },
+  methods:{
+
+    async getAnswer(){
+      this.answer           = 'thinking';
+      const {answer,image}  = await fetch('https://yesno.wtf/api').then(r => r.json())
+      this.answer           = answer
+      this.image            = image
+    }
+
+  },
+  watch:{
+    question(val,oldValue){
+      if (!val.endsWith('?')) return
+      this.getAnswer()
+    }
+  }
 }
 </script>
 
