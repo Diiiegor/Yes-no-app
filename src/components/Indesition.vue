@@ -5,10 +5,12 @@
   <div class="indesition-container">
     <input v-model="question" type="text" placeholder="Write a question">
     <p>Please remember to finish with a question mark (?)</p>
-    <div>
+
+    <div v-if="isValidQuestion">
       <h2>{{question}}</h2>
-      <h1>{{ answer }}</h1>
+      <h1>{{ answer }}!</h1>
     </div>
+
   </div>
 </template>
 
@@ -19,7 +21,8 @@ export default {
     return {
       question:null,
       answer:null,
-      image:null
+      image:null,
+      isValidQuestion:false
     }
   },
   methods:{
@@ -34,7 +37,9 @@ export default {
   },
   watch:{
     question(val,oldValue){
+      this.isValidQuestion = false
       if (!val.endsWith('?')) return
+      this.isValidQuestion = true
       this.getAnswer()
     }
   }
