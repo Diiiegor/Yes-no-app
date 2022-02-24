@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <Counter :start="110" title="entraron"/>
+  <Indesition/>
 </template>
 
 <script>
-import Counter from "./components/Counter";
+import Indesition from "./components/Indesition";
 
 export default {
   name: 'App',
   components: {
-    Counter
+    Indesition,
   }
 
 }
