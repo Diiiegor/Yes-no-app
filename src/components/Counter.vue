@@ -4,8 +4,8 @@
   <p data-testid="counter">{{counter}}</p>
 
   <div>
-    <button @click="increase">+1</button>
-    <button @click="decrease">-1</button>
+    <button data-testid="increase-btn" @click="increase">+1</button>
+    <button data-testid="decrease-btn" @click="decrease">-1</button>
   </div>
 
 </template>

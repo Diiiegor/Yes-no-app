@@ -21,4 +21,18 @@ describe('Counter component', () => {
         const value     = wrapper.find('[data-testid="counter"]').text()
         expect(value).toBe('100')
     })
+
+    test('Must be increment and decrement in 1 the counter value',async ()=>{
+        const wrapper       = shallowMount(Counter);
+        const increaseBtn   = wrapper.find('[data-testid="increase-btn"]')
+        await increaseBtn.trigger('click')
+        let value         = wrapper.find('[data-testid="counter"]').text()
+        expect(value).toBe('101')
+
+        const decreaseBtn   = wrapper.find('[data-testid="decrease-btn"]')
+        await decreaseBtn.trigger('click')
+        await decreaseBtn.trigger('click')
+        value         = wrapper.find('[data-testid="counter"]').text()
+        expect(value).toBe('99')
+    })
 })
