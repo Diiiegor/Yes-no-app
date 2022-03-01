@@ -43,4 +43,10 @@ describe('Counter component', () => {
         const value         = wrapper.find('[data-testid="counter"]').text()
         expect(value).toBe('101')
     })
+
+    test('must be set the default value',()=>{
+        const start     = wrapper.props('start')
+        const value     = wrapper.find('[data-testid="counter"]').text()
+        expect(Number(value)).toBe(start)
+    })
 })
