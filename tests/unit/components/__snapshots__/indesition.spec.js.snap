@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the indesition component Must be match with the snapshot 1`] = `
+<!--v-if-->
+<div class="bg-dark"></div>
+<div class="indesition-container"><input type="text" placeholder="Write a question">
+  <p>Please remember to finish with a question mark (?)</p>
+  <!--v-if-->
+</div>
+`;
