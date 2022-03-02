@@ -1,5 +1,6 @@
 import {shallowMount, mount} from '@vue/test-utils';
 import Counter from "@/components/Counter";
+import counter from "../../../src/components/Counter";
 
 describe('Counter component', () => {
     let wrapper;
@@ -48,5 +49,15 @@ describe('Counter component', () => {
         const start     = wrapper.props('start')
         const value     = wrapper.find('[data-testid="counter"]').text()
         expect(Number(value)).toBe(start)
+    })
+
+    test('Must be show the title prop',()=>{
+        const title = "hello my dude"
+        const wrapper = shallowMount(Counter,{
+            props:{title:"hello my dude"}
+        })
+        const value = wrapper.find('h2').text()
+        expect(value).toBe(title)
+
     })
 })
